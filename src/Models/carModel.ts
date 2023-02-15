@@ -14,12 +14,20 @@ export default class CarODM {
       buyValue: { type: Number, required: true },
       doorsQty: { type: Number, required: true },
       seatsQty: { type: Number, required: true },
-    });
+    }, { versionKey: false });
 
-    this.model = models.cars || model('cars', this.schema);
+    this.model = models.Car || model('Car', this.schema);
   }
 
   public async create(car: ICar): Promise<ICar> {
     return this.model.create({ ...car });
+  }
+
+  public async findAll() {
+    return this.model.find();
+  }
+
+  public async findById(id: string) {
+    return this.model.findById(id);
   }
 }
