@@ -21,22 +21,11 @@ export default class CarService {
   public async findById(id: string) {
     const carODM = new CarODM();
     const result = await carODM.findById(id);
-    console.log(result);
+   
     if (!result) {
       return null;
     }
-
-    // const resultId = {
-    //   id: result?.id,
-    //   model: result?.model,
-    //   year: result?.year,
-    //   color: result?.color,
-    //   status: result?.status,
-    //   buyValue: result?.buyValue,
-    //   doorsQty: result?.doorsQty,
-    //   seatsQty: result?.seatsQty,
-    // };
-    // return resultId;
+    
     return new Car(result);
   }
 }

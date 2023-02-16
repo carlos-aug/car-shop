@@ -46,10 +46,7 @@ export default class CarController {
       }
       return this.res.status(200).json(result);
     } catch (error) {
-      // if ((error as Error).message === 'false') {
-      //   return this.res.status(404).json({ message: 'Car not found' });
       this.next(error);
-      // }
     }
   }
 }

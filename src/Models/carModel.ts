@@ -14,7 +14,7 @@ export default class CarODM {
       buyValue: { type: Number, required: true },
       doorsQty: { type: Number, required: true },
       seatsQty: { type: Number, required: true },
-    }, { versionKey: false });
+    });
 
     this.model = models.Car || model('Car', this.schema);
   }
