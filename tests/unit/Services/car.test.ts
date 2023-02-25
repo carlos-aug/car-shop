@@ -6,10 +6,6 @@ import ICar from '../../../src/Interfaces/ICar';
 import CarService from '../../../src/Services/carService';
 
 describe('Testa carService', function () {
-  afterEach(function () {
-    sinon.restore();
-  });
-  
   it('Deveria criar um novo carro com sucesso', async function () {
     const carInput: ICar = {
       model: 'Marea',
@@ -35,6 +31,7 @@ describe('Testa carService', function () {
     const carOutput: Car = new Car(newCar);
     
     sinon.stub(Model, 'create').resolves(carOutput);
+    sinon.stub(Model, 'findOne').resolves(carOutput);
     
     const service = new CarService();
     const result = await service.createCar(carInput);
@@ -62,5 +59,7 @@ describe('Testa carService', function () {
     const result = await service.findById(carID);
 
     expect(result).to.be.deep.equal(dataCar);
+
+    sinon.restore();
   });
 });

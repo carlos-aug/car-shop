@@ -1,6 +1,6 @@
 import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
-import CarODM from '../Models/carModel';
+import CarODM from '../Models/CarModel';
 
 export default class CarService {
   public async createCar(car: ICar): Promise<Car> {
@@ -26,6 +26,17 @@ export default class CarService {
       return null;
     }
     
+    return new Car(result);
+  }
+
+  public async updateCarById(id: string, entity: ICar) {
+    const carODM = new CarODM();
+    const result = await carODM.updateById(id, entity);
+
+    if (!result) {
+      return null;
+    }
+
     return new Car(result);
   }
 }
