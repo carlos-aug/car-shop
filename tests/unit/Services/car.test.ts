@@ -111,6 +111,7 @@ describe('Testa carService', function () {
         seatsQty: 5,
       },
     ];
+    
     const carsOutput = carList.map((car) => new Car(car));
     sinon.stub(Model, 'find').resolves(carsOutput);
 

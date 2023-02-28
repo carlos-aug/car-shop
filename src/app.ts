@@ -1,12 +1,12 @@
 import express from 'express';
-import routes from './Routes/routesCar';
+import routesCar from './Routes/routesCar';
 import routesMotorcycles from './Routes/routesMotorcycles';
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/cars', routes);
+app.use('/cars', routesCar);
 app.use('/motorcycles', routesMotorcycles);
 
 export default app;
